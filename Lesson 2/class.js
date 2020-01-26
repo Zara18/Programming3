@@ -43,12 +43,10 @@ class Grass {
     }
 }
 
-class GrassEater {
+class GrassEater extends Grass {
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
-        this.energy = 5;
+         super(x, y, index);
+         this.energy = 5;
     }
 
     getNewCoordinates() {
@@ -64,20 +62,11 @@ class GrassEater {
         ];
     }
 
-    chooseCell(character) {
-        this.getNewCoordinates();
-        var found = [];
-        for (var i in this.directions) {
-            var x = this.directions[i][0];
-            var y = this.directions[i][1];
-            if (x >= 0 && x < matrix[0].length && y >= 0 && y < matrix.length) {
-                if (matrix[y][x] == character) {
-                    found.push(this.directions[i]);
-                }
-            }
-        }
-        return found;
-    }
+    chooseCell(ch) {
+   this.getNewCoordinates();
+   return super.chooseCell(ch);
+}
+
     move() {
         var newCell = random(this.chooseCell(0));
         if (newCell) {
@@ -145,9 +134,9 @@ class GrassEater {
         }
     }
 }
-class Predator extends Grass{
+class Predator extends GrassEater {
     constructor(x, y, index) {
-        super(x, y, index);
+        super(x,y,index);
         this.energy = 1000;
         this.multiply = 0;
         this.directions = [];
@@ -255,11 +244,9 @@ class Predator extends Grass{
         }
     }
 }
-class Beast {
+class Beast extends Predator {
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
+        super(x,y,index);
         this.energy = 7;
         this.multiply = 0;
         this.directions = [];
@@ -376,11 +363,9 @@ class Beast {
     }
 }
 
-class GrassCreater {
+class GrassCreater extends Beast {
     constructor(x, y, index) {
-        this.x = x;
-        this.y = y;
-        this.index = index;
+        super(x,y,index);
         this.energy = 10;
         this.multiply = 0;
         this.directions = [];
