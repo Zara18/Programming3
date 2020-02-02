@@ -23,7 +23,7 @@ module.exports = class GrassEater extends LiveForm {
     chooseCell(character) {
         this.getNewCoordinates();
         return super.chooseCell(character);
-    } 
+    }
     mul() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
@@ -34,7 +34,7 @@ module.exports = class GrassEater extends LiveForm {
             matrix[y][x] = 2;
             let grassEater = new GrassEater(x, y);
             grassEaterArr.push(grassEater);
-            this.life = 5;
+            this.life = 8;
         }
     }
     eat() {

@@ -11,7 +11,7 @@ function setup() {
     //! Getting DOM objects (HTML elements)
     let grassCountElement = document.getElementById('grassCount');
     let grassEaterCountElement = document.getElementById('grassEaterCount');
-
+    let predatorCountElement = document.getElementById('predatorCount');
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
 
     socket.on("data", drawCreatures);
@@ -20,6 +20,8 @@ function setup() {
         //! after getting data pass it to matrix variable
         matrix = data.matrix;
         grassCountElement.innerText = data.grassCounter;
+        grassEaterCountElement.innerText = data.grassEaterCounter;
+        predatorCountElement.innerText = data.predatorCounter;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color
@@ -33,19 +35,22 @@ function setup() {
                     fill("green");
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 2) {
-                    fill("orange");
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 0) {
-                    fill('#acacac');
+                    fill("yellow");
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 3) {
                     fill('red');
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 4) {
-                    fill('blue');
+                    fill('pink');
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 5) {
+                    fill('blue');
+                    rect(j * side, i * side, side, side);
+                } else if (matrix[i][j] == 6) {
                     fill('yellow');
+                    rect(j * side, i * side, side, side);
+                }else if (matrix[i][j] == 0) {
+                    fill('#acacac');
                     rect(j * side, i * side, side, side);
                 }
             }

@@ -45,8 +45,8 @@ class Grass {
 
 class GrassEater extends Grass {
     constructor(x, y, index) {
-         super(x, y, index);
-         this.energy = 5;
+        super(x, y, index);
+        this.energy = 5;
     }
 
     getNewCoordinates() {
@@ -63,9 +63,9 @@ class GrassEater extends Grass {
     }
 
     chooseCell(ch) {
-   this.getNewCoordinates();
-   return super.chooseCell(ch);
-}
+        this.getNewCoordinates();
+        return super.chooseCell(ch);
+    }
 
     move() {
         var newCell = random(this.chooseCell(0));
@@ -136,7 +136,7 @@ class GrassEater extends Grass {
 }
 class Predator extends GrassEater {
     constructor(x, y, index) {
-        super(x,y,index);
+        super(x, y, index);
         this.energy = 1000;
         this.multiply = 0;
         this.directions = [];
@@ -246,7 +246,7 @@ class Predator extends GrassEater {
 }
 class Beast extends Predator {
     constructor(x, y, index) {
-        super(x,y,index);
+        super(x, y, index);
         this.energy = 7;
         this.multiply = 0;
         this.directions = [];
@@ -365,7 +365,7 @@ class Beast extends Predator {
 
 class GrassCreater extends Beast {
     constructor(x, y, index) {
-        super(x,y,index);
+        super(x, y, index);
         this.energy = 10;
         this.multiply = 0;
         this.directions = [];
@@ -462,7 +462,7 @@ class GrassCreater extends Beast {
             this.energy += 2;
 
         }
-        else{
+        else {
             this.move()
         }
     }

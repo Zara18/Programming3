@@ -35,7 +35,7 @@ module.exports = class Predator extends LiveForm {
     chooseCell(character) {
         this.getNewCoordinates();
         return super.chooseCell(character);
-    } 
+    }
     mul() {
         let emptyCells = this.chooseCell(0);
         let newCell = random(emptyCells);
@@ -46,7 +46,7 @@ module.exports = class Predator extends LiveForm {
             matrix[y][x] = 3;
             let predator = new Predator(x, y);
             predatorArr.push(predator);
-            this.energy = 5;
+            this.energy = 7;
         }
     }
     eat() {
@@ -97,11 +97,10 @@ module.exports = class Predator extends LiveForm {
     }
     die() {
         matrix[this.y][this.x] = 0;
-
         for (let i in predatorArr) {
             if (predatorArr[i].x == this.x && predatorArr[i].y == this.y) {
                 predatorArr.splice(i, 1)
             }
         }
     }
-}
+}       
