@@ -12,6 +12,8 @@ function setup() {
     let grassCountElement = document.getElementById('grassCount');
     let grassEaterCountElement = document.getElementById('grassEaterCount');
     let predatorCountElement = document.getElementById('predatorCount');
+    let beastCountElement = document.getElementById('beastCount');
+    let grassCreaterCountElement = document.getElementById('grassCreaterCount');
     //! adding socket listener on "data" <-- name, after that fire 'drawCreatures' function 
 
     socket.on("data", drawCreatures);
@@ -22,6 +24,8 @@ function setup() {
         grassCountElement.innerText = data.grassCounter;
         grassEaterCountElement.innerText = data.grassEaterCounter;
         predatorCountElement.innerText = data.predatorCounter;
+        beastCountElement.innerText = data.beastCounter;
+        grassCreaterCountElement.innerText = data.grassCreaterCounter;
         //! Every time it creates new Canvas woth new matrix size
         createCanvas(matrix[0].length * side, matrix.length * side)
         //! clearing background by setting it to new grey color
@@ -41,13 +45,13 @@ function setup() {
                     fill('red');
                     rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 4) {
-                    fill('pink');
-                    rect(j * side, i * side, side, side);
-                } else if (matrix[i][j] == 5) {
                     fill('blue');
                     rect(j * side, i * side, side, side);
+                } else if (matrix[i][j] == 5) {
+                    fill('pink');
+                    rect(j * side, i * side, side, side);
                 } else if (matrix[i][j] == 6) {
-                    fill('yellow');
+                    fill('lightpink');
                     rect(j * side, i * side, side, side);
                 }else if (matrix[i][j] == 0) {
                     fill('#acacac');

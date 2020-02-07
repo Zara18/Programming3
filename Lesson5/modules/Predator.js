@@ -6,7 +6,7 @@ var random = require("./random.js");
 module.exports = class Predator extends LiveForm {
     constructor(x, y) {
         super(x, y);
-        this.energy = 500;
+        this.energy = 8;
         this.multiply = 0;
     }
     getNewCoordinates() {
@@ -46,7 +46,7 @@ module.exports = class Predator extends LiveForm {
             matrix[y][x] = 3;
             let predator = new Predator(x, y);
             predatorArr.push(predator);
-            this.energy = 7;
+            this.energy = 5;
         }
     }
     eat() {
@@ -62,7 +62,7 @@ module.exports = class Predator extends LiveForm {
             matrix[y][x] = 3;
             matrix[this.y][this.x] = 0;
 
-            for (let i in predatorArr) {
+            for (let i in grassEaterArr) {
                 if (grassEaterArr[i].x == x && grassEaterArr[i].y == y) {
                     grassEaterArr.splice(i, 1)
                 }
@@ -70,7 +70,7 @@ module.exports = class Predator extends LiveForm {
             this.x = x;
             this.y = y;
 
-            if (this.energy >= 15) {
+            if (this.energy >= 50) {
                 this.mul();
             }
         }
